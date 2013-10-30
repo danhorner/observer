@@ -23,15 +23,16 @@
 
 """
 This is a small observer library. There are many, but this one meets my particular needs:
-    - Straightforward encapsulation of Algorithms that run when input conditions are changed
-    - Variables can be blocked to suppress updates until inputs have stabilized
-        - Never worry about callback ordering
 
-    - Observer syntax should be readable
+- Straightforward encapsulation of Algorithms that run when input conditions are changed
+- Variables can be blocked to suppress updates until inputs have stabilized
+	- Never worry about callback ordering
+- Observer syntax should be readable
 
 See esp: 
-    py-notify   [http://home.gna.org/py-notify/]               ( Close, but I esp. want to coalesce updates)
-    trellis     [https://pypi.python.org/pypi/Trellis/0.7a2]   ( Looks promising, if heavy)
+
+- [py-notify](http://home.gna.org/py-notify/)              (Close, but I esp. want to coalesce updates)
+- [trellis](https://pypi.python.org/pypi/Trellis/0.7a2)    (Looks promising, if heavy)
 
 
 `Observable` exposes the special property `value`, which is implemented by get() and set()
