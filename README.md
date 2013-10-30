@@ -33,15 +33,15 @@ o: 2
 `Variable` is like `Observable`, but also has an observable `Blocked` flag
  
 ```pycon
-     >>> v=Variable()
-     >>> v.observe(pp("v"))
-     >>> v.value=3
-     v: 3
-     >>> v.block()
-     >>> v.value=4
-     >>> v.value=5
-     >>> v.unblock()
-     v: 5
+>>> v=Variable()
+>>> v.observe(pp("v"))
+>>> v.value=3
+v: 3
+>>> v.block()
+>>> v.value=4
+>>> v.value=5
+>>> v.unblock()
+v: 5
 ```
 
 Variables can track other variables unidirectionally
