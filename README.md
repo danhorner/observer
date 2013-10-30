@@ -18,7 +18,7 @@ See esp:
 
 `Observable` exposes the special property `value`, which is implemented by get() and set()
 
-'''pycon
+```pycon
 >>> def pp(name):
 ...     def p(x):
 ...        print "%s: %r"%(name,x)
@@ -28,7 +28,7 @@ See esp:
 >>> o.observe(pp("o"))
 >>> o.value=2
 o: 2
-'''
+```
 
 `Variable` is like `Observable`, but also has an observable `Blocked` flag
  
