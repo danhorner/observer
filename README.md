@@ -46,39 +46,45 @@ o: 2
 
 Variables can track other variables unidirectionally
 
-    >>> source=Variable(2)
-    >>> v.track_variable(source)
-    v: 2
-    >>> source.value=7
-    v: 7
+```pycon
+>>> source=Variable(2)
+>>> v.track_variable(source)
+v: 2
+>>> source.value=7
+v: 7
+```
 
 Variables can be linked with other variables bidirectionally
 
-    >>> v_copy=Variable()
-    >>> v_copy.observe(pp("v_copy"))
-    >>> linkVariables(v,v_copy)
-    v_copy: 7
-    >>> source.value="two places at once"
-    v: 'two places at once'
-    v_copy: 'two places at once'
-    >>> unlinkVariables(v,v_copy)
+```pycon
+>>> v_copy=Variable()
+>>> v_copy.observe(pp("v_copy"))
+>>> linkVariables(v,v_copy)
+v_copy: 7
+>>> source.value="two places at once"
+v: 'two places at once'
+v_copy: 'two places at once'
+>>> unlinkVariables(v,v_copy)
+```
 
 
 `Algorithm` is a container for variables that connects inputs to outputs
 
-    >>> class Inverter(Algorithm):
-    ...     _inputs_=('input',)
-    ...     _outputs_=('output',)
-    ...     def update(self):
-    ...         self.output.value=not self.input.value
-     
-    >>> i=Inverter()
-    >>> i.output.observe(pp("inverted"))
-    >>> i.enabled.set(True)
-    inverted: True
-    >>> i.input.value=True
-    inverted: False
- 
+```pycon
+>>> class Inverter(Algorithm):
+...     _inputs_=('input',)
+...     _outputs_=('output',)
+...     def update(self):
+...         self.output.value=not self.input.value
+
+>>> i=Inverter()
+>>> i.output.observe(pp("inverted"))
+>>> i.enabled.set(True)
+inverted: True
+>>> i.input.value=True
+inverted: False
+```
+
 These modules can be connected together to form a flow graph. The idea is to
 use the `blocked` flag to suppress processing until the parent data has stopped
 flapping about. There is also an `enable` flag which is useful to stop your
