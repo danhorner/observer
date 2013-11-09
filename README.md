@@ -12,7 +12,7 @@ See esp:
 - [py-notify](http://home.gna.org/py-notify/)              (Close, but I esp. want to coalesce updates)
 - [trellis](https://pypi.python.org/pypi/Trellis/0.7a2)    (Looks promising, if heavy)
 
-Sneak Preview:
+### Sneak Preview: ###
 
 ```pycon
 >>> def printVar(name):
@@ -51,6 +51,8 @@ v2: 3
 v3: 6
 ```
 
+Read on to see how to implement a custom `Algorithm`: a transformation from inputs to outputs that is executed asynchronously as inputs change
+
 ### Basic Objects ###
 
 `Observable` exposes the special property `value`, which is implemented by get() and set(). It also implements observe() 
@@ -63,8 +65,9 @@ o: 2
 ```
 
 `Variable` is like `Observable`, but updates can be suppressed using the
-`blocked` flag, which is also observable. blocking is essential to have updates
-propagate correctly when there are diamond-shaped Flows: v1->(v2,v3)->v4
+`blocked` flag, which is also observable. This is the main building block of
+the module: blocking is essential to have updates propagate correctly when
+there are diamond-shaped Flows: v1->(v2,v3)->v4
  
 ```pycon
 >>> v=Variable()
